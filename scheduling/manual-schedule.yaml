@@ -3,8 +3,10 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    app: my-nginx
 spec:
   containers:
   -  image: nginx
      name: nginx
-  nodeName: node01
+  nodeName: ip-172-31-43-63
