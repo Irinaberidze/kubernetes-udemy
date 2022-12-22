@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  APP_COLOR: darkblue
+kind: ConfigMap
+metadata:
+  name: webapp-config-map
+
+
+# alternatively create using imperative commands :
+
+# kubectl create configmap \
+# webapp-config-map --from-literal=APP_COLOR=darkblue
+
+
+# to view configmaps : kubectl get configmaps

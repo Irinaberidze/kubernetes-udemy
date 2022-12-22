@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: ubuntu-sleeper-2
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    args:  # args overrides CMD field in the Dockerfile
+      - "10"
+    command:  # command overrides ENTRYPOINT field in the Dockerfile
+      - "sleep"
+   
