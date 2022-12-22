@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: app
+  template:
+    metadata:
+      name: webapp
+      labels:
+        type: app
+    spec:
+      containers:
+        - name: webapp
+          image: docker.io/gokalpkocer/webapp:latest
+
