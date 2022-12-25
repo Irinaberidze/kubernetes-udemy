@@ -1,5 +1,7 @@
 ## Security context in Kubernetes
 
+You can configure security settings at a pod level or container level. If you choose to configure at both level: the settings on the container will override the settings on the pod. 
+
 to configure security context on the container add below under spec:
 
 ```
