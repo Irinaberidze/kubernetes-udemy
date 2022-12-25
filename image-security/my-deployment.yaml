@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+      metadata:
+        name: myapp-pod
+        labels:
+          app: myapp
+          type: front-end
+      spec:
+        containers:
+        - name: httpd-frontend
+          image:  myprivateregistry.com:5000/nginx:alpine # private docker registry
+        imagePullSecrets: # add to use docker credentials stored in secret we created.
+          - name: private-reg-cred
+
