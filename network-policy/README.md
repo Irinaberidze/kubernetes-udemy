@@ -1,5 +1,12 @@
 ## Network Policies
 
+to get networkpolicy run:
+
+```
+k get netpol
+```
+
+
 Below policy creates network policy to allow traffic from the Internal(pod) application only to the payroll-service and db-service.
 
 
