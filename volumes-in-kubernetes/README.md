@@ -66,6 +66,11 @@ spec:
     path: /pv/log
 ```
 
+to check run:
+ ```
+  k get persistentvolume
+ ```
+
 ## Creating Persistent Volume Claim
 
 Create a Persistent Volume Claim with the given specification.
@@ -89,4 +94,8 @@ spec:
   resources:
     requests:
       storage: 50Mi
+```
+to check run:
+```
+k get persistentvolumeclaim
 ```
