@@ -101,3 +101,34 @@ to check run:
 ```
 k get persistentvolumeclaim
 ```
+
+
+## Updating the pod with persistent volume claim as storage
+
+Update the webapp pod to use the persistent volume claim as its storage as below.
+
+
+* Volume: PersistentVolumeClaim=claim-log-1
+
+* Volume Mount: /log
+
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: webapp
+  name: webapp
+spec:
+  containers:
+  - image: kodekloud/event-simulator
+    name: webapp
+    volumeMounts:
+    - mountPath: /log
+      name: log-volume
+  volumes:
+  - name: log-volume
+    persistentVolumeClaim:
+        claimName: claim-log-1
+```
