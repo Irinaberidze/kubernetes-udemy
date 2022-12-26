@@ -73,14 +73,16 @@ to check run:
 
 ## Creating Persistent Volume Claim
 
-Create a Persistent Volume Claim with the given specification.
+Create a Persistent Volume Claim with the given specifications.
+
+### Note: Access modes has to match with persistent volume and Persistent Claim in order for persistent claim to be bind it to Persistent Volume.
 
 
 * Volume Name: claim-log-1
 
 * Storage Request: 50Mi
 
-* Access Modes: ReadWriteOnce
+* Access Modes: ReadWriteMany
 
 
 ```
@@ -90,7 +92,7 @@ metadata:
   name: claim-log-1
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 50Mi
