@@ -66,4 +66,27 @@ spec:
     path: /pv/log
 ```
 
+## Creating Persistent Volume Claim
 
+Create a Persistent Volume Claim with the given specification.
+
+
+* Volume Name: claim-log-1
+
+* Storage Request: 50Mi
+
+* Access Modes: ReadWriteOnce
+
+
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: claim-log-1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Mi
+```
