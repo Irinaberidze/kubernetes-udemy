@@ -66,4 +66,45 @@ k create ingress -h
 example :
 
 ```
-k create ingress my-ingress -n ingress-space --rule="/wear=wear-service:8080" --rule="/watch=video-service:8080"
+k create ingress my-ingress -n app-space --rule="/wear=wear-service:8080" --rule="/watch=video-service:8080"
+```
+
+
+it looks like this in yaml:
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  namespace: app-space
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /wear
+        pathType: Prefix
+        backend:
+          service:
+           name: wear-service
+           port: 
+            number: 8080
+      - path: /watch
+        pathType: Prefix
+        backend:
+          service:
+           name: video-service
+           port:
+            number: 8080
+```
+
+we also added annotations as below for rewrite target set to false:
+
+```
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+```
